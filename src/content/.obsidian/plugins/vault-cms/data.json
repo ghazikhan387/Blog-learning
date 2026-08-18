@@ -30,7 +30,7 @@
       "draftLogic": "true-draft",
       "hasDraftStatus": true,
       "imageProperty": "image",
-      "template": "---\ntitle: \"{{title}}\"\nupdated: {{date}}\npublished: \"\"\ndescription: \"\"\nimage: \"\"\ntags: []\ncategory: \"\"\ndraft: true\n---\n"
+      "template": "---\ntitle: \"{{title}}\"\nupdated: {{date}}\npublished: {{date}}\ndescription: \"\"\nimage: \"\"\ntags: []\ncategory: \"\"\ndraft: true\n---\n"
     }
   },
   "attachmentHandlingMode": "subfolder",
@@ -69,7 +69,7 @@
         "id": "content-type-1786984450854-d2mqmkbeg",
         "name": "Posts",
         "folder": "posts",
-        "template": "---\ntitle: \"{{title}}\"\nupdated: {{date}}\npublished: \"\"\ndescription: \"\"\nimage: \"\"\ntags: []\ncategory: \"\"\ndraft: true\n---\n",
+        "template": "---\ntitle: \"{{title}}\"\nupdated: {{date}}\npublished: {{date}}\ndescription: \"\"\nimage: \"\"\ntags: []\ncategory: \"\"\ndraft: true\n---\n",
         "enabled": true,
         "linkBasePath": "/posts/",
         "creationMode": "folder",

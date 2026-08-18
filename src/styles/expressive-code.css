@@ -1,6 +1,11 @@
 .expressive-code {
     .frame {
         @apply !shadow-none;
+        border: 1px solid var(--codeblock-border);
+    }
+
+    .header {
+        border-bottom: 1px solid var(--codeblock-border);
     }
 
     .title {

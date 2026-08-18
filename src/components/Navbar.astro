@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 import { navBarConfig, siteConfig } from "../config";
 import { LinkPresets } from "../constants/link-presets";
 import { LinkPreset, type NavBarLink } from "../types/config";
-import { url } from "../utils/url-utils";
+import { pathsEqual, url } from "../utils/url-utils";
 import LightDarkSwitch from "./LightDarkSwitch.svelte";
 import Search from "./Search.svelte";
 import DisplaySettings from "./widget/DisplaySettings.svelte";
@@ -19,16 +19,19 @@ let links: NavBarLink[] = navBarConfig.links.map(
 		return item;
 	},
 );
+
+const isLinkActive = (l: NavBarLink) =>
+	!l.external && pathsEqual(Astro.url.pathname, url(l.url));
 ---
 <div id="navbar" class="z-50 onload-animation">
     <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"></div> <!-- used for onload animation -->
     <div class:list={[
         className,
-        "card-base !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-t-none mx-auto flex items-center justify-between px-4"]}>
+        "card-base !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-t-none mx-auto flex items-center justify-between px-4 border-x-0 border-t-0"]}>
         <a href={url('/')} class="btn-plain scale-animation rounded-lg h-[3.25rem] px-5 font-bold active:scale-95">
             <div class="flex flex-row text-[var(--primary)] items-center text-md">
-                <Icon name="material-symbols:home-outline-rounded" class="text-[1.75rem] mb-1 mr-2" />
-                {siteConfig.title}
+                <Icon name="material-symbols:functions" class="text-[1.75rem] mb-1 mr-2" />
+                <span class="tech-meta text-base tracking-tight">{siteConfig.title}</span>
             </div>
         </a>
         <div class="hidden md:flex">
@@ -36,7 +39,7 @@ let links: NavBarLink[] = navBarConfig.links.map(
                 return <a aria-label={l.name} href={l.external ? l.url : url(l.url)} target={l.external ? "_blank" : null}
                           class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"
                 >
-                    <div class="flex items-center">
+                    <div class="flex items-center" class:list={[{"text-[var(--primary)]": isLinkActive(l)}]}>
                         {l.name}
                         {l.external && <Icon name="fa6-solid:arrow-up-right-from-square" class="text-[0.875rem] transition -translate-y-[1px] ml-1 text-black/[0.2] dark:text-white/[0.2]"></Icon>}
                     </div>

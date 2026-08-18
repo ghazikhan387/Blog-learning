@@ -14,8 +14,10 @@ const currentYear = new Date().getFullYear();
         &copy; <span id="copyright-year">{currentYear}</span> {profileConfig.name}. All Rights Reserved. /
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('rss.xml')}>RSS</a> /
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('sitemap-index.xml')}>Sitemap</a><br>
-        Powered by
+        <span aria-hidden="true" class="tech-meta text-[var(--primary)] opacity-60 mr-1.5">&#8721;</span>
+        <span class="tech-meta text-xs tracking-tight">Powered by
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
+        </span>
     </div>
 </div>

@@ -111,7 +111,7 @@ onMount(async () => {
                 >
                     <div class="flex flex-row justify-start items-center h-full">
                         <!-- date -->
-                        <div class="w-[15%] md:w-[10%] transition text-sm text-right text-50">
+                        <div class="w-[15%] md:w-[10%] transition text-right text-50 tech-meta text-xs">
                             {formatDate(post.data.published)}
                         </div>
 
@@ -138,8 +138,8 @@ onMount(async () => {
 
                         <!-- tag list -->
                         <div
-                                class="hidden md:block md:w-[15%] text-left text-sm transition
-                     whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
+                                class="hidden md:block md:w-[15%] text-left transition
+                     whitespace-nowrap overflow-ellipsis overflow-hidden text-30 tech-meta text-xs"
                         >
                             {formatTag(post.data.tags)}
                         </div>

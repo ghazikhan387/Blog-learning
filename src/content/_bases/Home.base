@@ -1,3 +1,7 @@
+filters:
+  or:
+    - file.ext == "md"
+    - file.ext == "mdx"
 formulas:
   Slug: |-
     if(file.folder == "posts", "/posts/" + file.name.replace(".md", ""), 
@@ -20,53 +24,48 @@ formulas:
         "root"
       )
     )
-
-filters:
-  or:
-    - file.ext == "md"
-    - file.ext == "mdx"
-
 properties:
-  "file.fullname":
+  file.fullname:
     displayName: Full File Name
-  "file.name":
+  file.name:
     displayName: File Name
-  "formula.Slug":
+  formula.Slug:
     displayName: Path
-  "note.date":
+  note.date:
     displayName: Date
-  "note.description":
+  note.description:
     displayName: Description
-  "note.draft":
+  note.draft:
     displayName: Draft
-  "note.image":
+  note.image:
     displayName: Image
-  "note.pubDate":
+  note.pubDate:
     displayName: Date
-  "note.tags":
+  note.tags:
     displayName: Tags
-  "note.title":
+  note.title:
     displayName: Title
-  "note.updated":
+  note.updated:
     displayName: Updated
-
 views:
   - type: cms
-    name: "Posts"
+    name: Posts
     filters:
       and:
         - file.folder.startsWith("posts")
+    order:
+      - file.name
     sort:
-      - property: note.updated
+      - property: updated
         direction: DESC
-    imageFormat: "cover"
+    imageFormat: cover
     showDate: true
     customizeNewButton: true
-    newNoteLocation: "posts"
-    fallbackToEmbeds: "if-empty"
+    newNoteLocation: posts
+    fallbackToEmbeds: if-empty
     propertyDisplay1: file.fullname
     showTextPreview: true
-    propertyLabels: "above"
+    propertyLabels: above
     titleProperty: note.title
     dateProperty: note.updated
     descriptionProperty: note.description
@@ -77,7 +76,7 @@ views:
     draftStatusProperty: note.draft
     draftStatusReverse: false
   - type: cms
-    name: "Vault CMS Guide"
+    name: Vault CMS Guide
     filters:
       and:
         - file.folder == "/"
@@ -86,13 +85,13 @@ views:
     sort:
       - property: file.ctime
         direction: DESC
-    fallbackToEmbeds: "never"
+    fallbackToEmbeds: never
     propertyDisplay1: file.fullname
     showTextPreview: true
-    imageFormat: "none"
+    imageFormat: none
     showDate: false
     showDraftStatus: false
-    propertyLabels: "above"
+    propertyLabels: above
     titleProperty: note.title
     propertyLayout12SideBySide: false
     propertyLayout34SideBySide: false

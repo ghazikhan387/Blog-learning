@@ -2,7 +2,7 @@
 
 @layer components {
     .card-base {
-        @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition;
+        @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition border border-[var(--hairline)];
     }
     h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
         @apply transition;
@@ -97,6 +97,11 @@
         @apply w-8 h-8 transition rounded-md flex items-center justify-center bg-[var(--btn-regular-bg)]
         text-[var(--btn-content)] mr-2
     }
+
+    .tech-meta {
+        @apply tracking-tight;
+        font-family: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    }
     .with-divider {
         @apply before:content-['/'] before:ml-1.5 before:mr-1.5 before:text-[var(--meta-divider)] before:text-sm
         before:font-medium before:first-of-type:hidden before:transition
@@ -118,6 +123,57 @@
 
 ::selection {
     background-color: var(--selection-bg)
+}
+
+/* ===== Subtle mathematical notebook background =====
+   Layers: a soft hue glow, faint math notation, and a fine graph-paper grid.
+   The math-symbol layer is a baked SVG so it stays constant in both themes;
+   the grid lines follow the theme via --graph-line.
+   Painted on a fixed full-viewport pseudo-element so the grid stays in place
+   while the page scrolls, always behind the content. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        radial-gradient(ellipse 90% 55% at 50% -15%, color-mix(in oklch, var(--primary) 7%, transparent), transparent 60%),
+        url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='480'%20height='480'%20viewBox='0%200%20480%20480'%3E%3Cg%20fill='%2310141c'%20fill-opacity='0.055'%20font-family='Georgia,serif'%20font-size='20'%3E%3Ctext%20x='40'%20y='60'%20transform='rotate(-12%2040%2060)'%3E%26%23x2211;%3C/text%3E%3Ctext%20x='180'%20y='40'%20transform='rotate(8%20180%2040)'%3E%26%23x2202;%3C/text%3E%3Ctext%20x='320'%20y='70'%20transform='rotate(-6%20320%2070)'%3E%26%23x2207;%3C/text%3E%3Ctext%20x='430'%20y='50'%20transform='rotate(14%20430%2050)'%3E%26%23x3BB;%3C/text%3E%3Ctext%20x='90'%20y='140'%20transform='rotate(10%2090%20140)'%3E%26%23x222B;%3C/text%3E%3Ctext%20x='250'%20y='150'%20transform='rotate(-10%20250%20150)'%3E%26%23x3C0;%3C/text%3E%3Ctext%20x='410'%20y='160'%20transform='rotate(6%20410%20160)'%3E%26%23x221E;%3C/text%3E%3Ctext%20x='30'%20y='240'%20transform='rotate(-8%2030%20240)'%3E%26%23x221A;%3C/text%3E%3Ctext%20x='170'%20y='230'%20transform='rotate(12%20170%20230)'%3E%26%23x3B1;%3C/text%3E%3Ctext%20x='330'%20y='250'%20transform='rotate(-14%20330%20250)'%3Ef(x)%3C/text%3E%3Ctext%20x='450'%20y='280'%20transform='rotate(9%20450%20280)'%3E%26%23x3B5;%3C/text%3E%3Ctext%20x='80'%20y='330'%20transform='rotate(7%2080%20330)'%3E%26%23x3A9;%3C/text%3E%3Ctext%20x='240'%20y='340'%20transform='rotate(-9%20240%20340)'%3E%26%23x3B8;%3C/text%3E%3Ctext%20x='400'%20y='330'%20transform='rotate(11%20400%20330)'%3E%26%23x3A3;%3C/text%3E%3Ctext%20x='40'%20y='430'%20transform='rotate(-11%2040%20430)'%3E%26%23x2208;%3C/text%3E%3Ctext%20x='200'%20y='440'%20transform='rotate(6%20200%20440)'%3E%26%23x3C6;%3C/text%3E%3Ctext%20x='360'%20y='450'%20transform='rotate(-7%20360%20450)'%3E%26%23x2202;%3C/text%3E%3C/g%3E%3C/svg%3E"),
+        linear-gradient(to right, var(--graph-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--graph-line) 1px, transparent 1px);
+    background-size: 100% 100%, 480px 480px, 32px 32px, 32px 32px;
+    background-repeat: no-repeat, repeat, repeat, repeat;
+    background-position: center top, center top, center top, center top;
+}
+
+.dark body::before {
+    background-image:
+        radial-gradient(ellipse 90% 55% at 50% -15%, color-mix(in oklch, var(--primary) 6%, transparent), transparent 60%),
+        url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='480'%20height='480'%20viewBox='0%200%20480%20480'%3E%3Cg%20fill='%23e6e9f0'%20fill-opacity='0.07'%20font-family='Georgia,serif'%20font-size='20'%3E%3Ctext%20x='40'%20y='60'%20transform='rotate(-12%2040%2060)'%3E%26%23x2211;%3C/text%3E%3Ctext%20x='180'%20y='40'%20transform='rotate(8%20180%2040)'%3E%26%23x2202;%3C/text%3E%3Ctext%20x='320'%20y='70'%20transform='rotate(-6%20320%2070)'%3E%26%23x2207;%3C/text%3E%3Ctext%20x='430'%20y='50'%20transform='rotate(14%20430%2050)'%3E%26%23x3BB;%3C/text%3E%3Ctext%20x='90'%20y='140'%20transform='rotate(10%2090%20140)'%3E%26%23x222B;%3C/text%3E%3Ctext%20x='250'%20y='150'%20transform='rotate(-10%20250%20150)'%3E%26%23x3C0;%3C/text%3E%3Ctext%20x='410'%20y='160'%20transform='rotate(6%20410%20160)'%3E%26%23x221E;%3C/text%3E%3Ctext%20x='30'%20y='240'%20transform='rotate(-8%2030%20240)'%3E%26%23x221A;%3C/text%3E%3Ctext%20x='170'%20y='230'%20transform='rotate(12%20170%20230)'%3E%26%23x3B1;%3C/text%3E%3Ctext%20x='330'%20y='250'%20transform='rotate(-14%20330%20250)'%3Ef(x)%3C/text%3E%3Ctext%20x='450'%20y='280'%20transform='rotate(9%20450%20280)'%3E%26%23x3B5;%3C/text%3E%3Ctext%20x='80'%20y='330'%20transform='rotate(7%2080%20330)'%3E%26%23x3A9;%3C/text%3E%3Ctext%20x='240'%20y='340'%20transform='rotate(-9%20240%20340)'%3E%26%23x3B8;%3C/text%3E%3Ctext%20x='400'%20y='330'%20transform='rotate(11%20400%20330)'%3E%26%23x3A3;%3C/text%3E%3Ctext%20x='40'%20y='430'%20transform='rotate(-11%2040%20430)'%3E%26%23x2208;%3C/text%3E%3Ctext%20x='200'%20y='440'%20transform='rotate(6%20200%20440)'%3E%26%23x3C6;%3C/text%3E%3Ctext%20x='360'%20y='450'%20transform='rotate(-7%20360%20450)'%3E%26%23x2202;%3C/text%3E%3C/g%3E%3C/svg%3E"),
+        linear-gradient(to right, var(--graph-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--graph-line) 1px, transparent 1px);
+    background-size: 100% 100%, 480px 480px, 32px 32px, 32px 32px;
+    background-repeat: no-repeat, repeat, repeat, repeat;
+    background-position: center top, center top, center top, center top;
+}
+
+/* ===== Accessibility ===== */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .onload-animation {
+        opacity: 1 !important;
+    }
 }
 
 .dash-line {
