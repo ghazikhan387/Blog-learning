@@ -1,3 +1,9 @@
+@import "./transition.css";
+@import "./markdown.css";
+@import "./scrollbar.css";
+@import "./photoswipe.css";
+@import "./expressive-code.css";
+
 @tailwind components;
 
 @layer components {
