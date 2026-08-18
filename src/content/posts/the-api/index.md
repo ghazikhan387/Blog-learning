@@ -174,15 +174,10 @@ One of the important capabilities Node.js provides is access to the file system.
 Using the built-in `fs` module, Node.js can:
 
 - read files
-    
 - create files
-    
 - write to files
-    
 - update files
-    
 - delete files
-    
 - work with directories
     
 
@@ -339,18 +334,18 @@ Real template engines provide many more features, such as:
 
 One important difference is **where the HTML is generated**.
 
-||Client-Side Rendering|Server-Side Rendering|
+| Aspect | Client-Side Rendering | Server-Side Rendering |
 |---|---|---|
-|Where HTML is generated|Browser|Server|
-|JavaScript runs in|Browser|Server and/or browser depending on framework|
-|Typical example|React SPA|Server-rendered templates|
-|Data can be inserted before HTML reaches browser|❌|✅|
+| Where HTML is generated | Browser | Server |
+| JavaScript runs in | Browser | Server and/or browser, depending on the framework |
+| Typical example | React SPA | Server-rendered templates |
+| Data can be inserted before HTML reaches the browser | ❌ | ✅ |
 
-In client-side rendering, the browser receives JavaScript and uses it to build or update the UI.
+In **client-side rendering**, the browser receives JavaScript and uses it to build or update the UI.
 
-In server-side rendering, the server generates HTML using data and sends the resulting HTML to the browser.
+In **server-side rendering**, the server generates HTML using data and sends the resulting HTML to the browser.
 
-Template engines are commonly used for server-side rendering.
+Template engines are commonly used for **server-side rendering**.
 
 ---
 
