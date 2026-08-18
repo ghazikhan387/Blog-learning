@@ -3,12 +3,12 @@ title: Getting Started with My Blog
 updated: 2026-08-18
 published: 2026-08-18
 description: My first real post and an overview of the technology behind this blog.
-image: "../../../assets/images/banner-personal.png"
+image: ../../../assets/images/banner-personal.png
 tags:
   - web-development
   - Mathematics
 category: Technology
-draft: false
+draft: true
 ---
 # Getting Started with My Blog
 
